@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_stories'] = NewsStory.objects.all()[:4]
+        context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4] # https://docs.djangoproject.com/en/4.0/ref/models/querysets/#order-by
         context['all_stories'] = NewsStory.objects.all()
         return context
 
