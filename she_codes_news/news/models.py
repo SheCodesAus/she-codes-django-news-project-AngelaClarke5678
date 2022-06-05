@@ -10,4 +10,6 @@ class NewsStory(models.Model):
     )
     pub_date = models.DateTimeField()
     content = models.TextField()
-    
+    # story_img = models.ImageField(upload_to='she_codes_news/news/static/news/images/',null=True, blank=True)
+    story_img = models.CharField(max_length=500, default="paste  your ")
+
