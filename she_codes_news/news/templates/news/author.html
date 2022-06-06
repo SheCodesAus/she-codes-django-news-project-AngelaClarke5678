@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %} <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}"> {% endblock %} {% block content %}
+
+
+{% if author_list %}
+    <h1>{{ story.author }}</h1>
+    <ul>
+        {% for story in author_list %}
+            <div id="story-wrapper">
+            <h2>{{ story.title }}</h2>
+            <h4>{{ story.author }}</h4>
+            <div id="story-content">
+                <img src="{{ story.story_img }}">
+                {{ story.content|linebreaks }}
+            </div>
+            </div>
+        {% endfor %}
+    </ul>
+        {% else %}
+        <h1>{{ story.author }}</h1>
+        <p>There are no stories by this author.</p>
+        {% endif %}
+{% endblock %}
+
