@@ -1,14 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --main-font: 'Verdana', sans-serif;
+    --standard-font: 400;
+    --bold-font: 700;
+    --bolder-font: 900;
+    --bg-dark: #8246af;
+    --bg-mid: #ffba00;
+    --bg-light: #f0f0f0;
+    --dark-font: #8246af;
+    --shadow-font: #444444;
+    --light-font: #ffba00;
+    --primary-color: #083fd0;
+    --secondary-color: #ffba00;
+    --tertiary-color: #fdeca7;
+    --primary-shadow: #8246af;
+    --secondary-shadow: #ffba00;
+    --tertiary-shadow: #ffba00;
+    --highlight-color: #000000;
+    --box-shadow-main: 0px 2px 15px 2px var(--primary-shadow);
+    --box-shadow-secondary: 0px 2px 15px 2px var(--secondary-shadow);
+    --bottom-margin: 0.5rem;
+    --bottom-margin-2: 1rem;
+    --line-height: 1.7rem;
+}
 
 body {
-    background-color: #dfc4c6;
+    background-color: var(--bg-light);
+    font-family: var(--main-font);
+    color: var(--dark-font);
 }
 
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #de0614;
 }
 
 img {
@@ -16,14 +42,13 @@ img {
 }
 
 h1 {
-    font-family: 'Montserrat Subrayada', sans-serif;
     text-decoration: none;
     font-size: 4rem;
     margin: 0;
 }
 
 h2 {
-   font-family: 'Montserrat Subrayada', sans-serif; 
+    font-size: 3rem; 
 }
 
 h3 {
@@ -46,10 +71,18 @@ nav {
 a {
     margin: 2px;
     text-decoration: none;
-    color: #000;
+    color: var(--dark-font)
 }
 
 a, p {
-    font-family: monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+form {
+    margin: 2px;
+}
+
+button {
+    background-color: var(--bg-dark);
 }
 

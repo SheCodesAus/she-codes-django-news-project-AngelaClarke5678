@@ -6,3 +6,5 @@ using the following tutorial https://learndjango.com/tutorials/django-login-and-
 
 // News sorting //
 used the order_by to sort the latest articles https://docs.djangoproject.com/en/4.0/ref/models/querysets/#order-by 
+
+New
