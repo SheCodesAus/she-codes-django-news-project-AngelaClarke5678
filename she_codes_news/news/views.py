@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -48,3 +49,21 @@ class AddStoryView(generic.CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class EditStoryView(LoginRequiredMixin,generic.UpdateView):
+    model = NewsStory
+    context_object_name = 'storyForm'
+    fields = ['title', 'content', 'story_img']
+    template_name = 'news/editStory.html'
+    success_url = reverse_lazy('news:index')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class DeleteStoryView(LoginRequiredMixin,generic.CreateView):
+    form_class = StoryForm
+    model = NewsStory
+
+
+
