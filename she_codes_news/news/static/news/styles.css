@@ -10,6 +10,12 @@
     object-fit: cover;
 }
 
+#categories {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
 #latest-stories {
     display: grid;
     grid-template-columns: 1fr 1fr;
