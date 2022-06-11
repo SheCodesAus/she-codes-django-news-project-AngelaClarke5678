@@ -7,14 +7,23 @@
 
 <h2>Latest News</h2>
 
-<div id ="categories">
-    {% if categories %}
-        {% for category in categories %}
-            {% include "./Category.html" with category=category}
-        {% endfor %}
-        {% else %}
-        {% endif %}
-</div>
+<div>
+    <section>
+        <h2>News Categories</h2>
+        <ul>
+            {% for category in categories %}
+                {% if category %}
+                    <li><a href="{% url 'news:categorydetail' category %}">{{ category }}</a></li>
+                {% endif %}
+            % else %}
+                    <p>No categories are available.</p>
+            {% endfor %}
+
+        
+        </ul>          
+
+    </div>
+</section>
 
     <div id="latest-stories">
         {% if latest_stories %}

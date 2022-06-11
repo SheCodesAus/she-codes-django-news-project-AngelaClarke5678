@@ -2,9 +2,10 @@ import imp
 from django.views import generic
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
-from .models import NewsStory
+from .models import Category, NewsStory
 from .forms import StoryForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.forms import SlugField
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -35,6 +36,17 @@ class AuthorsListView(generic.ListView):
         author_id = self.kwargs['pk']
         return NewsStory.objects.filter(author = author_id,)
 
+class CategoryListView(generic.ListView):
+    context_object_name = 'category_list'
+    template_name = 'news/index.html'
+
+    def get_queryset(self):
+        return NewsStory.objects.filter(category=self.kwargs.get('pk')) 
+
+class CategoryView(generic.DetailView):
+    model= Category
+    slug_field = 'name'
+
 class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
@@ -61,9 +73,15 @@ class EditStoryView(LoginRequiredMixin,generic.UpdateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class DeleteStoryView(LoginRequiredMixin,generic.CreateView):
-    form_class = StoryForm
+class DeleteStoryView(LoginRequiredMixin,generic.UpdateView):
     model = NewsStory
+    context_object_name = 'storyForm'
+    fields = ['title', 'content', 'story_img']
+    template_name = 'news/deleteStory.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 
