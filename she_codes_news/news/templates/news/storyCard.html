@@ -2,9 +2,10 @@
     <a href="{% url 'news:story' story.id %}">
             <img src="{{ story.story_img }}"></a>
         <div class="story-card-text">
-            <h3>{{ story.title }}</h3></a>
+            <h3>{{ story.title }}</h3>
             <h4>{{ story.author }}</h4>
             <h4>{{ story.pub_date }}</h4>
+            <h4>Category: {{ story.category }}</h4>
         </div>
     </a>
 </div>

@@ -11,18 +11,6 @@
     --dark-font: #8246af;
     --shadow-font: #444444;
     --light-font: #ffba00;
-    --primary-color: #083fd0;
-    --secondary-color: #ffba00;
-    --tertiary-color: #fdeca7;
-    --primary-shadow: #8246af;
-    --secondary-shadow: #ffba00;
-    --tertiary-shadow: #ffba00;
-    --highlight-color: #000000;
-    --box-shadow-main: 0px 2px 15px 2px var(--primary-shadow);
-    --box-shadow-secondary: 0px 2px 15px 2px var(--secondary-shadow);
-    --bottom-margin: 0.5rem;
-    --bottom-margin-2: 1rem;
-    --line-height: 1.7rem;
 }
 
 body {
@@ -82,7 +70,15 @@ form {
     margin: 2px;
 }
 
-button {
+input[type="submit" i] {
     background-color: var(--bg-dark);
+    justify-content: center;
+    border-radius: 60px;
+    height: 30px;
+    width: 200px;
+    margin: auto;
+    color: var(--light-font);
+    font-family: var(--main-font);
+    font-size: 1rem;
 }
 

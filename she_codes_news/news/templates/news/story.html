@@ -6,6 +6,7 @@
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
     <a href="{% url 'news:author' story.author.id %}"><h4>{{ story.author }}</h4></a>
+    <h4>Category: {{ story.category }}</h4>
     <div id="story-content">
         <img src="{{ story.story_img }}">
         {{ story.content|linebreaks }}

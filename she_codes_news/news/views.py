@@ -37,11 +37,14 @@ class AuthorsListView(generic.ListView):
         return NewsStory.objects.filter(author = author_id,)
 
 class CategoryListView(generic.ListView):
+    models = Category
     context_object_name = 'category_list'
-    template_name = 'news/index.html'
+    template_name = 'news/category.html'
 
-    def get_queryset(self):
-        return NewsStory.objects.filter(category=self.kwargs.get('pk')) 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_list'] = Category.objects.all()
+        return context
 
 class CategoryView(generic.DetailView):
     model= Category
@@ -65,7 +68,7 @@ class AddStoryView(generic.CreateView):
 class EditStoryView(LoginRequiredMixin,generic.UpdateView):
     model = NewsStory
     context_object_name = 'storyForm'
-    fields = ['title', 'content', 'story_img']
+    fields = ['title', 'content', 'category', 'story_img']
     template_name = 'news/editStory.html'
     success_url = reverse_lazy('news:index')
 
