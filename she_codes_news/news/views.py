@@ -73,15 +73,13 @@ class EditStoryView(LoginRequiredMixin,generic.UpdateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class DeleteStoryView(LoginRequiredMixin,generic.UpdateView):
+class DeleteStoryView(LoginRequiredMixin,generic.DeleteView):
     model = NewsStory
     context_object_name = 'storyForm'
     fields = ['title', 'content', 'story_img']
     template_name = 'news/deleteStory.html'
+    success_url = reverse_lazy('news:index')
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
 
 
 
