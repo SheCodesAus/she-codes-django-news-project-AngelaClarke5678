@@ -1,0 +1,17 @@
+<div class="category" id="category">
+    <a href="{% url 'category:story' story.id %}">
+            </a>
+        <div class="story-card-text">
+            <h3>{{ category.name }}</h3></a>
+        </div>
+        <div class="story-card">   
+            {% if category.stories.all %}
+                {% for story in category.stories.all %}
+                    {% include "./storyCard.html" with story=story %}
+                {% endfor %}
+            {% else %}
+                <p>No stories are available.</p>
+            {% endif %}
+        </div>
+    </a>
+</div>
