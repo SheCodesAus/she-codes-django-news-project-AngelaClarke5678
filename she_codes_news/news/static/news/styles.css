@@ -1,7 +1,11 @@
 .story-card {
     margin: 2px;
     border: 1px solid #000;
+    background-color: white;
     padding: 5px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
 }
 
 .story-card img {
@@ -40,6 +44,10 @@
     display: flex;
     border: 1px solid black;
     margin: 50px;
+    background-color: white;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
 }
 
 #story-content {
