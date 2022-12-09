@@ -16,8 +16,13 @@ class NewsStory(models.Model):
     )
     pub_date = models.DateTimeField()
     content = models.TextField()
-    story_img = models.CharField(max_length=500, default="https://i.picsum.photos/id/1060/5598/3732.jpg?hmac=31kU0jp5ejnPTdEt-8tAXU5sE-buU-y1W1qk_BsiUC8")
-    category = models.CharField(max_length=255, default="uncategorised")
+    image = models.CharField(max_length=500, default="https://i.picsum.photos/id/1060/5598/3732.jpg?hmac=31kU0jp5ejnPTdEt-8tAXU5sE-buU-y1W1qk_BsiUC8")
+    category = models.ForeignKey(
+            Category, 
+            related_name = "stories",
+            null = True, blank=True,
+            on_delete=models.CASCADE
+        )
 
 class Author(models.Model):
     user = models.OneToOneField(get_user_model(),on_delete=models.CASCADE)

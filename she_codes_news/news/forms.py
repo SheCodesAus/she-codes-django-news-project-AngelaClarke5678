@@ -3,13 +3,14 @@ from unicodedata import category
 from django import forms
 from django.forms import ModelForm
 from .models import NewsStory
-from .models import Category
+from django.utils import timezone,dateformat
+
 
 class StoryForm(ModelForm):
     class Meta:
         model = NewsStory
-        category = forms.ModelMultipleChoiceField(queryset=Category.objects.all())
-        fields = ['title','pub_date','content','story_img', 'category']
-        widgets = {
-            'pub_date': forms.DateInput(format=('%m/%d/%Y'),attrs={'class':'form-control', 'placeholder':'Select a date','type':'date'}),
-        }
+        fields = ["title", "pub_date", "content", "image", "category"]
+      
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['pub_date'].initial = timezone.now().strftime("%Y-%m-%dT%H:%M")

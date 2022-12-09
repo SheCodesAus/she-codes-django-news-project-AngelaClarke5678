@@ -1,45 +1,49 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">{% endblock %}
 
 {% block content %}
 
-<!-- 
+
 <container>
     <section class="category-align">
-        <a href="{% url 'news:category' %}"><h2>Categories</h2></a>
+        <a href="{% url 'news:category' %}">
+            <h2>Categories</h2>
+        </a>
         {% if category_list %}
-            {% for Category in category_list %}
-            <ul>
-            <li><a href="{% url 'news:categorydetail' Category %}">{{ category }}</a></li></ul>
-            {% endfor %}
+        {% for Category in category_list %}
+        <ul>
+            <li><a href="{% url 'news:categorydetail' Category %}">{{ category }}</a></li>
+        </ul>
+        {% endfor %}
         {% else %}
-            <p>No categories are available.</p>
-        {% endif %}          
+        <p>No categories are available.</p>
+        {% endif %}
     </section>
-</container> -->
+</container>
 
 <h2>Latest News</h2>
-    <div id="latest-stories">
-        {% if latest_stories %}
-            {% for story in latest_stories %}
-                {% include "./storyCard.html" with story=story position=forloop.counter %}
-            {% endfor %}
-        {% else %}
-            <p>No stories are available.</p>
-        {% endif %}
-    </div>
+<div id="latest-stories">
+    {% if latest_stories %}
+    {% for story in latest_stories %}
+    {% include "./storyCard.html" with story=story position=forloop.counter %}
+    {% endfor %}
+    {% else %}
+    <p>No stories are available.</p>
+    {% endif %}
+</div>
 
-    <h2>All Stories</h2>
-    <div id="all-stories">
-        {% if latest_stories %}
-            {% for story in all_stories %}
-                {% include "./storyCard.html" with story=story %}
-            {% endfor %}
-        {% else %}
-            <p>No stories are available.</p>
-        {% endif %}
-    </div>
+<h2>All Stories</h2>
+<div id="all-stories">
+    {% if latest_stories %}
+    {% for story in all_stories %}
+    {% include "./storyCard.html" with story=story %}
+    {% endfor %}
+    {% else %}
+    <p>No stories are available.</p>
+    {% endif %}
+</div>
 
 {% endblock %}
